@@ -52,6 +52,8 @@ jobs:
           # Clone repository
           git clone https://github.com/palachev/grade-api-gitops.git gitops
           cd gitops
+
+          cat deployment.yaml
           
           # Update image tag in deployment.yaml
           if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -59,6 +61,8 @@ jobs:
           else
             sed -i "s|image: ghcr.io/${{ env.OWNER_LOWER }}/grade-api:.*|image: ghcr.io/${{ env.OWNER_LOWER }}/grade-api:${{ github.sha }}|g" deployment.yaml
           fi
+
+          cat deployment.yaml
           
           # Commit changes
           git config --global user.name "GitHub Actions"
