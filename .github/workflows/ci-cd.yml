@@ -78,7 +78,7 @@ jobs:
             grep "image:" deployment.yaml
             echo "Новый хеш: ${{ github.sha }}"
             
-            # Принудительно обновляем файл
+            # Принудительно обновляем файл...
             echo "Принудительно обновляем файл..."
             if [[ "$OSTYPE" == "darwin"* ]]; then
               sed -i '' "s|image: ghcr.io/palachev/grade-api:latest|image: ghcr.io/palachev/grade-api:${{ github.sha }}|g" deployment.yaml
